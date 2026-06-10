@@ -320,58 +320,7 @@
 
 
 
-
-<footer id="dynamic-footer" style="font-size: 12px; color: #777; padding: 40px 20px; text-align: center; line-height: 1.8; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #fafafa; border-top: 1px solid #eee;">
-  
-  <div style="margin-bottom: 12px; font-weight: 500; color: #444;">
-    © <span id="copyright-year"></span> <span id="site-title-display"></span>. All rights reserved.
-  </div>
-
-  <div style="display: flex; align-items: center; justify-content: center; gap: 8px; color: #999;">
-    <span style="display: inline-block; width: 8px; height: 8px; background-color: #2ecc71; border-radius: 50%; box-shadow: 0 0 5px #2ecc71; animation: pulse 2s infinite;"></span>
-    <span id="sync-status" aria-live="polite">시스템 안정화 운영 중</span>
-  </div>
-
-  <style>
-    @keyframes pulse {
-      0% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-  </style>
-</footer>
-
-<script>
-(function() {
-  'use strict';
-
-  // 1. 현재 연도 구하기 (KST 기준 안전하게 추출)
-  const now = new Date();
-  const formatter = new Intl.DateTimeFormat('ko-KR', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric'
-  });
-  const year = formatter.format(now).replace('년', '').trim();
-  const title = document.title || window.location.hostname;
-
-  // 2. UI 업데이트 (정적이고 안전한 정보만 반영)
-  document.getElementById('copyright-year').textContent = year;
-  document.getElementById('site-title-display').textContent = title;
-
-  // 3. 메타 태그에는 실시간 시간이 아닌 '카피라이트' 정보만 안전하게 주입
-  let metaCopy = document.querySelector('meta[name="copyright"]');
-  if (!metaCopy) {
-    metaCopy = document.createElement('meta');
-    metaCopy.setAttribute('name', 'copyright');
-    document.head.appendChild(metaCopy);
-  }
-  metaCopy.content = year + ' ' + title;
-
-})();
-</script>
-
-
-
+	
 
 
 
